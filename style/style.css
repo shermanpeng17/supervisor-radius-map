@@ -1287,6 +1287,7 @@ html, body, #map {
   
     #mobile-legend {
       padding: 0 1rem;
+      text-align: left !important;
     }
   
     #filter-container {

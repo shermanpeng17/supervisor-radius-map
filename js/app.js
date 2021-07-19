@@ -28,13 +28,13 @@ require(["esri/Map","esri/Color", "esri/layers/GraphicsLayer", "esri/geometry/pr
     "esri/geometry/Polygon", "esri/tasks/QueryTask", "esri/tasks/support/Query", 
     "esri/renderers/SimpleRenderer", "esri/geometry/Point", "esri/geometry/geometryEngineAsync",
     "esri/tasks/support/PrintTemplate", "esri/tasks/PrintTask", "esri/tasks/support/PrintParameters",
-    "esri/core/watchUtils"
+    "esri/core/watchUtils", "esri/layers/support/LabelClass"
 ],  function (Map, Color, GraphicsLayer, projection, Extent, MapView, webMercatorUtils,
     Graphic, BufferParameters,
     GeometryService, geometryEngine, SpatialReference, FeatureLayer, 
     MapImageLayer, BasemapToggle, SimpleRenderer, IdentifyTask, 
     IdentifyParameters, geometryEngine, Polygon, QueryTask, Query, SimpleRenderer, Point, geometryEngineAsync,
-    PrintTemplate, PrintTask, PrintParameters, watchUtils) {
+    PrintTemplate, PrintTask, PrintParameters, watchUtils, LabelClass) {
 
     var MapCtrl = function() {
         var map, view, currMatchingFeaturesArr;
@@ -57,10 +57,9 @@ require(["esri/Map","esri/Color", "esri/layers/GraphicsLayer", "esri/geometry/pr
 
         mapImageLayer = new MapImageLayer({
             url: poposArtURL,
-            opacity: 1
+            opacity: 1,
         });
         map.add(mapImageLayer);
-
         view.when(function () {
             view.on("click", executeIdentifyTask);
             view.watch("popup.visible", function (newVal, oldVal) {
@@ -74,6 +73,10 @@ require(["esri/Map","esri/Color", "esri/layers/GraphicsLayer", "esri/geometry/pr
               });           
 
         });
+
+        mapImageLayer.when(function() {
+ 
+        })
 
         // mapImageLayer.when(function() {
         //     watchUtils.when(view, "stationary", function() {
@@ -256,9 +259,7 @@ require(["esri/Map","esri/Color", "esri/layers/GraphicsLayer", "esri/geometry/pr
             },
 
             updateLayerVisibility: function(id, isVisible) {
-                console.log(isVisible)
-                console.log(mapImageLayer.findSublayerById(1))
-                mapImageLayer.findSublayerById(1).visible = isVisible;
+                mapImageLayer.findSublayerById(0).visible = isVisible;
             },
 
             setSearchTerm: function(str) {
@@ -279,7 +280,7 @@ require(["esri/Map","esri/Color", "esri/layers/GraphicsLayer", "esri/geometry/pr
                 ptemplate = new PrintTemplate({
                     scalePreserved: true,
                     attributionVisible: false,
-                    exportOptions: {width: 900, height: 900, dpi: 96  },
+                    exportOptions: {width: 2700, height: 2700, dpi: 300  },
                     format: "png32",
                     layout: "map-only",
                     showLabels: false,
@@ -778,8 +779,6 @@ require(["esri/Map","esri/Color", "esri/layers/GraphicsLayer", "esri/geometry/pr
                     var isChecked = e.target.checked;
                     var idName = e.target.id;
                     if (className.indexOf("layer-selection") != -1) {
-                        console.log("checked input")
-                        console.log(idName)
                         MapCtrl.updateLayerVisibility(idName, isChecked)
                     } 
               
@@ -828,7 +827,7 @@ require(["esri/Map","esri/Color", "esri/layers/GraphicsLayer", "esri/geometry/pr
               
                 });
 
-                $("#printmap").click(function() {
+                $(".printmap").click(function() {
                     var inputString = $("#addressInput").val();
                     MapCtrl.makeMapPDF(inputString);
                     callLoadSpinner();

@@ -156,7 +156,42 @@
         <div class="container-fluid menu-mobile d-lg-none">
             <div class="row tab-display-container">
                 <div id="mobile-selected-tab">
+                    <div id="mobile-legend">
+                        <div class="retail-cannabis-checkbox">
+                            <div class="filter-category-name">Map Description</div>
+                            <span>This map places a 300, 500, and 1000
+                                <br>
+                                feet buffer around the search location.
+                                <br> You can also print a copy of the map
+                                <br> in PDF format. 
+                            </span>
 
+                        </div>
+
+
+                        <div class="custom-control custom-checkbox">
+
+                            <div class="user-input user-input-maptitle">
+                                <label for="map-pdf-title-mobile">Enter Map Title For PDF</label>
+                                <div class="input-group mb-3">
+
+                                    <input type="text" class="form-control" id="map-pdf-title-mobile"
+                                        aria-describedby="basic-addon3">
+                                </div>
+                            </div>
+
+                        </div>
+                        <ul class="list-view" style="margin: 0px 20px">
+                            <li>
+                                <a class="printmap" href="javascript:void(0)">Print Map</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" onclick="feedback()">Send Feedback</a>
+                            </li>
+
+                        </ul>
+
+                    </div>
                 </div>
                 <div id="filter-container" style="display: none">
                     <div id="filter-elements">
@@ -165,89 +200,21 @@
                             &nbsp; &nbsp; &nbsp;
 
 
-
                             <input type="checkbox" class="list_item layer-selection custom-control-input"
-                                id="popos-all-mobile" value="5" checked>
-
-                            <label class="custom-control-label" for="popos-all-mobile">POPOS</label>
+                                id="Parcels-mobile" value="5">
+                            <label class="Parcels custom-control-label" for="Parcels-mobile">Turn on Parcels
+                                Layer</label>
                             <a class="accordion-toggle collapsed" data-toggle="collapse"
-                                href="#submitted-description-mobile" aria-expanded="false"
-                                aria-controls="submitted-description-mobile">
+                                href="#parcel-layer-description-mobile" aria-expanded="false"
+                                aria-controls="parcel-layer-description-mobile">
                             </a>
-                            <div class="collapse permit-description mobile" id="submitted-description-mobile">
-                                <ul style="padding: 0;">
-                                    <li>
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input popos-filter" value="indoor">
-                                            <label class="form-check-label" for="popos-indoor">Indoor</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input popos-filter"
-                                                value="outdoor">
-                                            <label class="form-check-label" for="popos-outdoor">OutDoor</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input popos-filter"
-                                                value="food-available">
-                                            <label class="form-check-label" for="popos-food-available">Food
-                                                Available</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input popos-filter"
-                                                value="restroom">
-                                            <label class="form-check-label" for="popos-restroom">Restroom
-                                                Available</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input popos-filter"
-                                                value="seating">
-                                            <label class="form-check-label" for="popos-seating">Table & Seating
-                                                Available</label>
-                                        </div>
-                                    </li>
-                                    <li>
-
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input popos-filter"
-                                                value="open-always">
-                                            <label class="form-check-label" for="popos-open-always">Open All
-                                                Times</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input popos-filter"
-                                                value="open-business-hr">
-                                            <label class="form-check-label" for="popos-open-business-hr">Open Only
-                                                Business Hours</label>
-                                        </div>
-                                    </li>
-                                </ul>
+                            <div class="collapse permit-description" id="parcel-layer-description-mobile">
+                                Parcel labels may not show <br>
+                                until you zoom in much closer
                             </div>
                         </div>
 
-                        <div class="custom-control custom-checkbox">
-                            &nbsp; &nbsp; &nbsp;
-                            <input type="checkbox"
-                                class="public-art-all layer-selection list_item custom-control-input "
-                                id="public-art-all-mobile" value="4" checked>
-                            <label class="custom-control-label" for="public-art-all-mobile">Public Art</label>
-                            <a class="accordion-toggle collapsed" data-toggle="collapse"
-                                href="#processing-description-mobile" aria-expanded="false"
-                                aria-controls="processing-description-mobile">
-                            </a>
-                            <div class="collapse permit-description" id="processing-description-mobile">
-                                Public Art Locations
-                            </div>
-                        </div>
+
                     </div>
 
                 </div>
@@ -283,12 +250,12 @@
                     <span>This map places a 300, 500, and 1000
                         <br>
                         feet buffer around the search location
+                        <br> You can also print a copy of the map
+                        <br> in PDF format. 
                     </span>
                     <div class="custom-control custom-checkbox">
                         &nbsp; &nbsp; &nbsp;
-                        <!-- <div class="pin" id="submittedPin">
 
-                        </div> -->
                         <input type="checkbox" class="list_item layer-selection custom-control-input" id="Parcels"
                             value="5">
                         <label class="Parcels custom-control-label" for="Parcels">Turn on Parcels Layer</label>
@@ -297,7 +264,7 @@
                         </a>
                         <div class="collapse permit-description" id="parcel-layer-description">
                             Parcel labels may not show <br>
-                            until you in much closer
+                            until you zoom in much closer
                         </div>
                     </div>
                 </div>
@@ -319,7 +286,7 @@
 
                 <ul class="list-view" style="margin: 0px 20px">
                     <li>
-                        <a id="printmap" href="javascript:void(0)">Print Map</a>
+                        <a class="printmap" href="javascript:void(0)">Print Map</a>
                     </li>
                     <li>
                         <a href="javascript:void(0)" onclick="feedback()">Send Feedback</a>
